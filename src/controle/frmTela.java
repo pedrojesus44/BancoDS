@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package controle;
 
 import conexao.Conexao; // importar do package a classe
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel; // para reconhecimento da Jtable
+import java.sql.*; // para reconhecimento dos comandos SQL
 
 public class frmTela extends javax.swing.JFrame {
 
@@ -15,9 +14,14 @@ public class frmTela extends javax.swing.JFrame {
         initComponents();
         con_cliente = new Conexao(); // inicialização do objeto como instância
         con_cliente.conecta(); // chama o método que conecta
+        con_cliente.executaSQL("select * from tbclientes order by cod");
+        preencherTabela();
+        posicionarRegistro();
+        tblClientes.setAutoCreateRowSorter(true);// ativa a classificação ordenada da tabela
     }
 
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,6 +137,41 @@ public class frmTela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void preencherTabela() {
+        tblClientes.getColumnModel().getColumn(0).setPreferredWidth(4);
+        tblClientes.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tblClientes.getColumnModel().getColumn(2).setPreferredWidth(11);
+        tblClientes.getColumnModel().getColumn(3).setPreferredWidth(14);
+        tblClientes.getColumnModel().getColumn(4).setPreferredWidth(100);
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+        modelo.setNumRows(0);
+        
+        try {
+            con_cliente.resultset.beforeFirst();
+            while(con_cliente.resultset.next()) {
+                modelo.addRow(new Object[] {
+                    con_cliente.resultset.getString("cod"),
+                    con_cliente.resultset.getString("nome"),
+                    con_cliente.resultset.getString("dt_nasc"),
+                    con_cliente.resultset.getString("telefone"),
+                    con_cliente.resultset.getString("email");
+                });
+            }
+        } catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null,"\n Erro ao listar dados da tabela!! :\n "+erro,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+        
+    public void posicionarRegistro() {
+        try {
+            con_cliente.resultset.first(); // posiciona no 1° registro da tabela
+            mostrar_Dados(); // chama o método que irá buscar o dado da tabela
+            }catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null,"Não foi possível posicionar no primeiro registro: ")
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
