@@ -42,6 +42,13 @@ public class frmTela extends javax.swing.JFrame {
         btnVoltarUmRegistro = new javax.swing.JButton();
         btnAvancarUmRegistro = new javax.swing.JButton();
         btnUltimoRegistro = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnGravar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        rotulo6 = new javax.swing.JLabel();
+        txt6 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,15 +121,55 @@ public class frmTela extends javax.swing.JFrame {
             }
         });
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controle/add.png"))); // NOI18N
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controle/disk.png"))); // NOI18N
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
+            }
+        });
+
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controle/application_edit.png"))); // NOI18N
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controle/application_delete.png"))); // NOI18N
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controle/door_in.png"))); // NOI18N
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
+        rotulo6.setText("Pesquisa por nome do Cliente:");
+
+        txt6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt6KeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +180,17 @@ public class frmTela extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAvancarUmRegistro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUltimoRegistro))
+                                .addComponent(btnUltimoRegistro)
+                                .addGap(47, 47, 47)
+                                .addComponent(btnNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGravar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSair))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(rotulo5)
@@ -154,8 +211,18 @@ public class frmTela extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(rotulo3)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                                    .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 13, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(rotulo6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,17 +249,22 @@ public class frmTela extends javax.swing.JFrame {
                     .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPrimeiroRegistro)
-                            .addComponent(btnVoltarUmRegistro)
-                            .addComponent(btnAvancarUmRegistro))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUltimoRegistro)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(btnPrimeiroRegistro)
+                    .addComponent(btnVoltarUmRegistro)
+                    .addComponent(btnAvancarUmRegistro)
+                    .addComponent(btnNovo)
+                    .addComponent(btnGravar)
+                    .addComponent(btnAlterar)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnSair)
+                    .addComponent(btnUltimoRegistro))
+                .addGap(18, 18, 18)
+                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rotulo6)
+                    .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -252,6 +324,106 @@ public class frmTela extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Não foi possível posicionar no próximo registro: "+erro,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAvancarUmRegistroActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        txt1.setText(""); // limpa a caixa de texto em questão
+        txt2.setText("");
+        txt3.setText("");
+        txt4.setText("");
+        txt5.setText("");
+        txt1.requestFocus(); // posiciona o cursos neste campo para digitação
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        String nome = txt2.getText();
+        String data_nasc = txt3.getText();
+        String telefone = txt4.getText();
+        String email = txt5.getText();
+        
+        try {
+            String insert_sql="insert into tbclientes (nome,telefone, email, dt_nasc) values ('" + nome + "','" + telefone + "','" + email + "','" + data_nasc + "')";
+            con_cliente.statement.executeUpdate(insert_sql);
+            JOptionPane.showMessageDialog(null,"Gravação realizada com sucesso!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+            con_cliente.executaSQL("select * from tbclientes order by cod");
+            con_cliente.resultset.first();
+            preencherTabela();
+            mostrar_Dados();
+            
+        }catch(SQLException errosql) {
+            JOptionPane.showMessageDialog(null,"\n Erro na gravação :\n "+errosql,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnGravarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        String nome = txt2.getText();
+        String data_nasc = txt3.getText();
+        String telefone = txt4.getText();
+        String email = txt5.getText();
+        String sql="";
+        String msg="";
+        
+        try {
+            if(txt1.getText().equals("")){
+                sql="insert into tbclientes (nome,telefone, email, dt_nasc) values ('" + nome + "','" + telefone + "','" + email + "','" + data_nasc + "')";
+                msg="Gravação de um novo registro";
+            } else {
+                sql="update tbclientes set nome='" + nome + "',telefone='" + telefone + "', email='" + email + "', dt_nasc='" + data_nasc + "' where cod = " + txt1.getText();
+                msg="Alteração de registro";
+            }
+            
+            con_cliente.statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null,msg+" realizada com sucesso!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+            
+            con_cliente.executaSQL("select * from tbclientes order by cod");
+            con_cliente.resultset.first();
+            preencherTabela();
+            mostrar_Dados();
+            
+        }catch(SQLException errosql){
+            JOptionPane.showMessageDialog(null,"\n Erro na gravação :\n "+errosql,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String sql="";
+        try {
+            int resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir o registro: ","Confirmar Exclusão", JOptionPane.YES_NO_OPTION,3);
+            if (resposta==0) {
+                sql = "delete from tbclientes where cod = " + txt1.getText();
+                int excluir = con_cliente.statement.executeUpdate(sql);
+                if (excluir==1) {
+                    JOptionPane.showMessageDialog(null,"Exclusão realizada com sucesso!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+                    con_cliente.executaSQL("select * from tbclientes order by cod");
+                    con_cliente.resultset.first();
+                    preencherTabela();
+                    posicionarRegistro();
+                }else {
+                    JOptionPane.showMessageDialog(null,"Operação cancelada pelo usuário!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+                }
+            } 
+        }catch (SQLException excecao) {
+            JOptionPane.showMessageDialog(null,"Erro na exclusão: "+excecao,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txt6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt6KeyReleased
+        try {
+            String pesquisa = "select * from tbclientes where nome like '" + txt6.getText() + "%'";
+            con_cliente.executaSQL(pesquisa);
+            
+            if(con_cliente.resultset.first()){
+                preencherTabela();
+            } else {
+                JOptionPane.showMessageDialog(null,"\n Não existe dados com este paramêtro!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(SQLException errosql) {
+            JOptionPane.showMessageDialog(null,"\n Os dados digitados não foram localizados!! :\n "+errosql,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_txt6KeyReleased
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     
     public void preencherTabela() {
@@ -336,8 +508,13 @@ public class frmTela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JScrollPane ScrollPane;
+    public javax.swing.JButton btnAlterar;
     public javax.swing.JButton btnAvancarUmRegistro;
+    public javax.swing.JButton btnExcluir;
+    public javax.swing.JButton btnGravar;
+    public javax.swing.JButton btnNovo;
     public javax.swing.JButton btnPrimeiroRegistro;
+    public javax.swing.JButton btnSair;
     public javax.swing.JButton btnUltimoRegistro;
     public javax.swing.JButton btnVoltarUmRegistro;
     public javax.swing.JLabel rotulo1;
@@ -345,11 +522,13 @@ public class frmTela extends javax.swing.JFrame {
     public javax.swing.JLabel rotulo3;
     public javax.swing.JLabel rotulo4;
     public javax.swing.JLabel rotulo5;
+    public javax.swing.JLabel rotulo6;
     public javax.swing.JTable tblClientes;
     public javax.swing.JTextField txt1;
     public javax.swing.JTextField txt2;
     public javax.swing.JTextField txt3;
     public javax.swing.JTextField txt4;
     public javax.swing.JTextField txt5;
+    public javax.swing.JTextField txt6;
     // End of variables declaration//GEN-END:variables
 }
