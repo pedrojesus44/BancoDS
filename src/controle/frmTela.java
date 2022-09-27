@@ -470,7 +470,6 @@ public class frmTela extends javax.swing.JFrame {
             txt4.setText(con_cliente.resultset.getString("telefone"));
             txt5.setText(con_cliente.resultset.getString("email"));
         } catch(SQLException erro) {
-            JOptionPane.showMessageDialog(null,"Não localizou dados: "+erro,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
